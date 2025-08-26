@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Password Strength Checker</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Floating key shapes (background) -->
+  <span class="key-shape key1">🔑</span>
+  <span class="key-shape key2">🔑</span>
+  <span class="key-shape key3">🔑</span>
+  <span class="key-shape key4">🔑</span>
+  <span class="key-shape key5">🔑</span>
+
+  <!-- Main card content -->
+  <div class="card">
+    <h1>Password Strength Checker</h1>
+    <p class="muted">Enter a password and the server will analyze its strength.</p>
+
+    <form action="/check" method="post" autocomplete="off">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+      <div class="actions">
+        <button type="submit">Check Strength</button>
+      </div>
+    </form>
+
+    <p class="small muted">Tip: This demo does not store passwords. It is a personal project demonstrating password strength analysis for learning purposes.</p>
+  </div>
+
+</body>
+</html>

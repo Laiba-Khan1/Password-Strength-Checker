@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #2e2e2e); /* Dark grey/black gradient */
+    color: white;
+    text-align: center;
+    padding: 50px;
+    overflow-x: hidden; /* allow scrolling but prevent horizontal scrollbar */
+    min-height: 100vh; /* ensure full viewport height */
+    position: relative;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    display: inline-block;
+    position: relative;
+    z-index: 2; /* Keep it above background */
+}
+
+input, button {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+input {
+    width: 250px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* --- Animated Key Shapes --- */
+.key-shape {
+    position: absolute;
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.08);
+    animation: floatKeys 20s infinite linear;
+    z-index: 1;
+    user-select: none; /* prevent accidental selection */
+    pointer-events: none; /* clickable elements stay usable */
+}
+
+.key1 { top: 10%; left: 15%; animation-delay: 0s; }
+.key2 { top: 25%; left: 70%; animation-delay: 3s; }
+.key3 { top: 60%; left: 30%; animation-delay: 6s; }
+.key4 { top: 80%; left: 80%; animation-delay: 9s; }
+.key5 { top: 40%; left: 5%;  animation-delay: 12s; }
+
+@keyframes floatKeys {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-60px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}

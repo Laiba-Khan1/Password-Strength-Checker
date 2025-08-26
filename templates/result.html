@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Result - Password Strength Checker</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* Elegant purple box-style Back button */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #6a0dad; /* Elegant purple */
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #7b1fa2; /* Slightly lighter purple on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating key shapes (background) -->
+  <span class="key-shape key1">🔑</span>
+  <span class="key-shape key2">🔑</span>
+  <span class="key-shape key3">🔑</span>
+  <span class="key-shape key4">🔑</span>
+  <span class="key-shape key5">🔑</span>
+
+  <!-- Main card content -->
+  <div class="card">
+    <h1>Analysis Result</h1>
+
+    <div class="row">
+      <div>
+        <strong>Rating:</strong>
+        <span class="badge">{{ result.rating }}</span>
+      </div>
+      <div>
+        <strong>Score:</strong> {{ result.score }} / 100
+      </div>
+    </div>
+
+    <div class="meter">
+      <div class="meter-bar" style="width: {{ result.score }}%;"></div>
+    </div>
+
+    <h3>Checklist</h3>
+    <ul class="checklist">
+      <li>{{ '✅' if result.length >= 8 else '❌' }} At least 8 characters ({{ result.length }})</li>
+      <li>{{ '✅' if result.has_lower else '❌' }} Contains lowercase</li>
+      <li>{{ '✅' if result.has_upper else '❌' }} Contains uppercase</li>
+      <li>{{ '✅' if result.has_digit else '❌' }} Contains digit</li>
+      <li>{{ '✅' if result.has_symbol else '❌' }} Contains symbol</li>
+    </ul>
+
+    <h3>Issues</h3>
+    {% if result.issues %}
+      <ul>
+        {% for it in result.issues %}
+          <li>{{ it }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No immediate issues—good job!</p>
+    {% endif %}
+
+    <h3>Suggestions</h3>
+    {% if result.suggestions %}
+      <ul>
+        {% for s in result.suggestions %}
+          <li>{{ s }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>None. Your password looks strong.</p>
+    {% endif %}
+
+    <div class="actions">
+      <a href="/" class="btn">Go Back</a>
+    </div>
+
+    <p class="small muted">Note: This demo does not store passwords. It is a personal project demonstrating password strength analysis for learning purposes.</p>
+  </div>
+
+</body>
+</html>
